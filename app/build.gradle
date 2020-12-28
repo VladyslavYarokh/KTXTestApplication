@@ -1,0 +1,107 @@
+apply from: "../dependencies.gradle"
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'kotlin-kapt'
+
+
+android {
+    compileSdkVersion appVersion.compileSdk
+
+    defaultConfig {
+        applicationId "com.yarokh.vladyslav"
+        minSdkVersion appVersion.minSdk
+        targetSdkVersion appVersion.targetSdk
+        versionCode 6
+        versionName "1.0.5"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release
+    }
+
+    buildTypes {
+        debug {
+//            manifestPlaceholders = [firebaseCollectionEnabled: "false"]
+            minifyEnabled false
+            debuggable true
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+//            manifestPlaceholders = [firebaseCollectionEnabled: "true"]
+            minifyEnabled true
+            debuggable false
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+    androidExtensions {
+        experimental = true
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation androidLibs.kotlinStdLib
+    implementation androidLibs.material
+    implementation androidLibs.appcompat
+    implementation androidLibs.ktx
+    implementation androidLibs.constraintLayout
+
+    implementation androidLibs.navigationFragment
+    implementation androidLibs.navigationUi
+
+    implementation androidLibs.lifecycleExt
+    implementation androidLibs.lifecycleLivedataKtx
+
+    implementation androidLibs.recyclerView
+    kapt androidLibs.lifecycleCompiler
+
+    implementation androidLibs.koinCore
+    implementation androidLibs.koinCoreExt
+    implementation androidLibs.koinScope
+    implementation androidLibs.koinViewModel
+
+    implementation androidLibs.retrofit
+    implementation androidLibs.retrofitConverter
+
+    implementation androidLibs.kotlinCoroutines
+
+    implementation androidLibs.okHttpLogginInterceptor
+
+    implementation androidLibs.viewpager2
+
+    implementation androidLibs.glide
+    kapt androidLibs.glideCompiler
+
+    implementation androidLibs.ICUlibrary
+
+    implementation androidLibs.jsoup
+
+    implementation androidLibs.okio
+
+    implementation androidLibs.biometric
+//
+//    implementation androidLibs.firebaseAnalytics
+//    implementation androidLibs.firebaseMessaging
+//    implementation androidLibs.firebaseCrashlytics
+
+    testImplementation testLibs.junit
+    androidTestImplementation testLibs.junitExt
+    androidTestImplementation testLibs.espressoCore
+}

@@ -1,0 +1,28 @@
+buildscript {
+    apply from: "dependencies.gradle"
+
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath androidPlugins.gradle
+        classpath androidPlugins.kotlin
+        classpath androidPlugins.navigationSafeArgs
+        classpath androidPlugins.gms
+//        classpath androidPlugins.firebaseCrashlytics
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
