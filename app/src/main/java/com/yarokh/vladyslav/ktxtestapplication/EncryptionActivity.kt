@@ -8,7 +8,7 @@ import android.util.Base64
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_encryption.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,7 +19,7 @@ import javax.crypto.SecretKey
 import javax.crypto.spec.GCMParameterSpec
 
 
-class MainActivity : AppCompatActivity() {
+class EncryptionActivity : AppCompatActivity() {
     private val baseStr = "DSheremetov@beeline.kz"
     private val str = "My name is Vladyslav Yarokh and I'm android developer"
     private val ANDROID_KEY_STORE = "AndroidKeyStore"
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_encryption)
 
         val encryptedPart = encrypt(str, baseStr.substringBeforeLast("@"))
 
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                 etAlias.text.clear()
             }).launch {
                 if (etAlias.text.toString().isEmpty()) {
-                    Toast.makeText(this@MainActivity, "Empty", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@EncryptionActivity, "Empty", Toast.LENGTH_LONG).show()
                 } else {
                     decrypt(encryptedPart, etAlias.text.toString())
                 }
