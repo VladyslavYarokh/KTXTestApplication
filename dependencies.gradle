@@ -27,7 +27,9 @@ ext {
                 qrCodeScanner          : '4.1.0',
                 jsoup                  : '1.13.1',
                 okio                   : '2.9.0',
-                biometric              : '1.0.1'
+                biometric              : '1.0.1',
+                map                    : '3.1.0-beta',
+                gmsMaps                : '17.0.0'
         ]
 
         testLibsVersion = [
@@ -41,7 +43,7 @@ ext {
                 kotlinVersion          : '1.3.72',
                 gradleToolsVersion     : '4.0.1',
                 gmsVersion             : "4.3.3",
-                firebaseCrashlytics    : '2.3.0'
+                firebaseCrashlytics    : '2.3.0',
         ]
 
         androidPlugins = [
@@ -81,7 +83,9 @@ ext {
                 firebaseCrashlytics    : "com.google.firebase:firebase-crashlytics-ktx:${androidLibsVersion.firebaseCrashlytics}",
                 jsoup                  : "org.jsoup:jsoup:${androidLibsVersion.jsoup}",
                 okio                   : "com.squareup.okio:okio:${androidLibsVersion.okio}",
-                biometric              : "androidx.biometric:biometric:${androidLibsVersion.biometric}"
+                biometric              : "androidx.biometric:biometric:${androidLibsVersion.biometric}",
+                map                    : "com.google.android.libraries.maps:maps:${androidLibsVersion.map}",
+                gmsMaps                : "com.google.android.gms:play-services-maps:${androidLibsVersion.gmsMaps}"
         ]
 
         testLibs = [

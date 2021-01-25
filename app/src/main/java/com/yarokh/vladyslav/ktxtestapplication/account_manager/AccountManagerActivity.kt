@@ -1,4 +1,4 @@
-package com.yarokh.vladyslav.ktxtestapplication
+package com.yarokh.vladyslav.ktxtestapplication.account_manager
 
 import android.accounts.Account
 import android.accounts.AccountManager
@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.yarokh.vladyslav.ktxtestapplication.R
 import kotlinx.android.synthetic.main.activity_account_manager.*
 
 /** also, you need next classes: AccountManagerActivity, Authenticator, GenericAccountService

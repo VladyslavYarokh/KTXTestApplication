@@ -1,4 +1,4 @@
-package com.yarokh.vladyslav.ktxtestapplication
+package com.yarokh.vladyslav.ktxtestapplication.encryption
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

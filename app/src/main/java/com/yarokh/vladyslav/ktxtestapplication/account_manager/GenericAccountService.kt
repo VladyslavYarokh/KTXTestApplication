@@ -1,4 +1,4 @@
-package com.yarokh.vladyslav.ktxtestapplication
+package com.yarokh.vladyslav.ktxtestapplication.account_manager
 
 import android.app.Service
 import android.content.Intent
@@ -12,7 +12,10 @@ class GenericAccountService : Service() {
         super.onCreate()
         synchronized(lock) {
             if (mAuthenticator == null) {
-                mAuthenticator = Authenticator(this)
+                mAuthenticator =
+                    Authenticator(
+                        this
+                    )
             }
         }
     }

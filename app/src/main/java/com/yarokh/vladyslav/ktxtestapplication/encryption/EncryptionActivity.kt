@@ -1,4 +1,4 @@
-package com.yarokh.vladyslav.ktxtestapplication
+package com.yarokh.vladyslav.ktxtestapplication.encryption
 
 import android.os.Build
 import android.os.Bundle
@@ -8,6 +8,8 @@ import android.util.Base64
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.yarokh.vladyslav.ktxtestapplication.R
+import com.yarokh.vladyslav.ktxtestapplication.coroutineExceptionHandler
 import kotlinx.android.synthetic.main.activity_encryption.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

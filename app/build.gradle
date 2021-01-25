@@ -4,18 +4,26 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
 
 
 android {
     compileSdkVersion appVersion.compileSdk
 
     defaultConfig {
-        applicationId "com.yarokh.vladyslav"
+        applicationId "com.yarokh.vladyslav.ktxtestapplication"
         minSdkVersion appVersion.minSdk
         targetSdkVersion appVersion.targetSdk
         versionCode 6
         versionName "1.0.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        Properties properties = new Properties()
+        if (rootProject.file("local.properties").exists()) {
+            properties.load(rootProject.file("local.properties").newDataInputStream())
+        }
+
+        manifestPlaceholders = [mapsApiKey: properties.getProperty("MAPS_API_KEY", "")]
     }
 
     signingConfigs {
@@ -96,6 +104,8 @@ dependencies {
     implementation androidLibs.okio
 
     implementation androidLibs.biometric
+
+    implementation androidLibs.map
 //
 //    implementation androidLibs.firebaseAnalytics
 //    implementation androidLibs.firebaseMessaging
@@ -104,4 +114,6 @@ dependencies {
     testImplementation testLibs.junit
     androidTestImplementation testLibs.junitExt
     androidTestImplementation testLibs.espressoCore
+
+    implementation androidLibs.gmsMaps
 }

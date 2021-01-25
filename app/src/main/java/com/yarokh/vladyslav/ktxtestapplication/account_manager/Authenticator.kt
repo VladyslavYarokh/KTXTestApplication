@@ -1,4 +1,4 @@
-package com.yarokh.vladyslav.ktxtestapplication
+package com.yarokh.vladyslav.ktxtestapplication.account_manager
 
 import android.accounts.*
 import android.content.Context

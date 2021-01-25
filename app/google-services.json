@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1077536121435",
+    "firebase_url": "https://newweatherforecast.firebaseio.com",
+    "project_id": "newweatherforecast",
+    "storage_bucket": "newweatherforecast.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077536121435:android:2e35f5d786bbb169c3157e",
+        "android_client_info": {
+          "package_name": "com.yarokh.vladyslav.ktxtestapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077536121435-je7581bo7t44u3jlcs3vt1fiv9i1euh5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7LrAJA0QAmhc-VmYHtrkTiy_eWJ-Q8d0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077536121435-je7581bo7t44u3jlcs3vt1fiv9i1euh5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
