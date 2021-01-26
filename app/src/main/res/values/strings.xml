@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">KTXTestApplication</string>
+    <string name="first_fragment_label">Fragment 1</string>
+    <string name="second_fragment_label">Fragment 2</string>
+    <string name="hello_first_fragment">Hello, its 1st fragment</string>
+    <string name="next">NEXT</string>
+    <string name="previous">PREVIOUS</string>
 </resources>
