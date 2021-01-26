@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.yarokh.vladyslav.ktxtestapplication">
 
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -16,21 +17,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".encryption.EncryptionActivity"
+        <activity
+            android:name=".encryption.EncryptionActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".account_manager.AccountManagerActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".deep_links.DeepLinkSelectedActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait">
-            <intent-filter>
+            <intent-filter
+                android:autoVerify="true"
+                tools:targetApi="23">
                 <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="http"
+                    android:host="vladyslav.yarokh.com" />
+                <data
+                    android:scheme="https"
+                    android:host="vladyslav.yarokh.com" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".account_manager.AccountManagerActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".geofences.GeofenceActivity"
+        <activity
+            android:name=".deep_links.DeepLinkActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,6 +55,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".geofences.GeofenceActivity"
+            android:screenOrientation="portrait" />
 
         <service android:name="com.yarokh.vladyslav.ktxtestapplication.account_manager.GenericAccountService">
             <intent-filter>
@@ -48,7 +69,7 @@
                 android:resource="@xml/authenticator" />
         </service>
 
-        <receiver android:name=".geofences.GeofenceBroadcastReceiver"/>
+        <receiver android:name=".geofences.GeofenceBroadcastReceiver" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
