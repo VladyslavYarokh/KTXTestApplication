@@ -20,7 +20,14 @@
         android:id="@+id/btnDecrypt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
         android:text="decrypt"/>
+
+    <Button
+        android:id="@+id/btnEncrypt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="encrypt"/>
 
     <EditText
         android:id="@+id/etAlias"
