@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
+import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -13,11 +14,13 @@ import kotlinx.android.synthetic.main.activity_encryption.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import okhttp3.internal.and
 import java.security.KeyStore
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 import javax.crypto.spec.GCMParameterSpec
+
 
 class EncryptionSecondActivity : AppCompatActivity() {
     private val baseStr = "DSheremetov@beeline.kz"
@@ -25,9 +28,10 @@ class EncryptionSecondActivity : AppCompatActivity() {
     private val ANDROID_KEY_STORE = "AndroidKeyStore"
     private val KEY_ALGORITHM = "AES/GCM/NoPadding"
     private val ALIAS_ERROR = "Alias is incorrect"
-    private var iv = byteArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+//    private var iv = byteArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     private var keyStore: KeyStore = KeyStore.getInstance(ANDROID_KEY_STORE)
     private var encryptedPart = ""
+    private var SEPARATOR = "SEPARATOR"
 
     init {
         keyStore.load(null)
@@ -46,6 +50,7 @@ class EncryptionSecondActivity : AppCompatActivity() {
                     Toast.makeText(this@EncryptionSecondActivity, "Empty", Toast.LENGTH_LONG).show()
                 } else {
                     encryptedPart = encrypt(etAlias.text.toString(), baseStr)
+                    Log.d("loggs", encryptedPart)
                 }
             }
         }
@@ -54,7 +59,7 @@ class EncryptionSecondActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.Main + coroutineExceptionHandler(ALIAS_ERROR) {
                 etAlias.text.clear()
             }).launch {
-                Toast.makeText(this@EncryptionSecondActivity, decrypt(encryptedPart.toByteArray(Charsets.ISO_8859_1), baseStr), Toast.LENGTH_LONG).show()
+                Toast.makeText(this@EncryptionSecondActivity, decrypt(encryptedPart, baseStr), Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -64,17 +69,21 @@ class EncryptionSecondActivity : AppCompatActivity() {
     private fun encrypt(msg: String, alias: String): String {
         val cipher = Cipher.getInstance(KEY_ALGORITHM)
         cipher.init(Cipher.ENCRYPT_MODE, generateSecretKey(alias))
-        iv = cipher.iv
-        return String(cipher.doFinal(msg.toByteArray(Charsets.ISO_8859_1)), Charsets.ISO_8859_1)
+        val iv = cipher.iv
+        val encrypted = cipher.doFinal(msg.toByteArray(Charsets.ISO_8859_1))
+        return byteArrayToString(encrypted) + SEPARATOR + byteArrayToString(iv)
     }
 
-    private fun decrypt(encryptedText: ByteArray, alias: String): String {
+    private fun decrypt(encryptedText: String, alias: String): String {
+        val parts = encryptedText.split(SEPARATOR)
+        val decrypted = stringToByteArray(parts[0])
+        val iv = stringToByteArray(parts[1])
         val spec = GCMParameterSpec(128, iv)
         val secretKeyEntry = keyStore.getEntry(alias, null) as KeyStore.SecretKeyEntry
         val key = secretKeyEntry.secretKey
         val cipher = Cipher.getInstance(KEY_ALGORITHM)
         cipher.init(Cipher.DECRYPT_MODE, key, spec)
-        return String(cipher.doFinal(encryptedText), Charsets.ISO_8859_1)
+        return String(cipher.doFinal(decrypted), Charsets.ISO_8859_1)
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -90,5 +99,35 @@ class EncryptionSecondActivity : AppCompatActivity() {
 
         keyGenerator.init(keyGenParameterSpec)
         return keyGenerator.generateKey()
+    }
+
+
+    private fun byteArrayToString(bytes: ByteArray): String? {
+        val sb = StringBuilder()
+        for (b: Byte in bytes) {
+            sb.append(String.format("%02x", b and 0xff))
+        }
+        return sb.toString()
+    }
+
+    private fun stringToByteArray(s: String?): ByteArray? {
+        if (s == null) {
+            return byteArrayOf()
+        }
+        if (s.length % 2 != 0 || s.isEmpty()) {
+            return byteArrayOf()
+        }
+        val data = ByteArray(s.length / 2)
+        var i = 0
+        while (i < s.length) {
+            try {
+                data[i / 2] =
+                    Integer.decode("0x" + s[i] + s[i + 1]).toByte()
+            } catch (e: NumberFormatException) {
+                return byteArrayOf()
+            }
+            i += 2
+        }
+        return data
     }
 }
