@@ -27,7 +27,7 @@ class EncryptionSecondActivity : AppCompatActivity() {
     private val ALIAS_ERROR = "Alias is incorrect"
     private var iv = byteArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     private var keyStore: KeyStore = KeyStore.getInstance(ANDROID_KEY_STORE)
-    private var encryptedPart = byteArrayOf()
+    private var encryptedPart = ""
 
     init {
         keyStore.load(null)
@@ -54,18 +54,18 @@ class EncryptionSecondActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.Main + coroutineExceptionHandler(ALIAS_ERROR) {
                 etAlias.text.clear()
             }).launch {
-                Toast.makeText(this@EncryptionSecondActivity, decrypt(encryptedPart, baseStr), Toast.LENGTH_LONG).show()
+                Toast.makeText(this@EncryptionSecondActivity, decrypt(encryptedPart.toByteArray(Charsets.ISO_8859_1), baseStr), Toast.LENGTH_LONG).show()
             }
         }
     }
 
 
     @RequiresApi(Build.VERSION_CODES.M)
-    private fun encrypt(msg: String, alias: String): ByteArray {
+    private fun encrypt(msg: String, alias: String): String {
         val cipher = Cipher.getInstance(KEY_ALGORITHM)
         cipher.init(Cipher.ENCRYPT_MODE, generateSecretKey(alias))
         iv = cipher.iv
-        return cipher.doFinal(msg.toByteArray(Charsets.UTF_8))
+        return String(cipher.doFinal(msg.toByteArray(Charsets.ISO_8859_1)), Charsets.ISO_8859_1)
     }
 
     private fun decrypt(encryptedText: ByteArray, alias: String): String {
@@ -74,7 +74,7 @@ class EncryptionSecondActivity : AppCompatActivity() {
         val key = secretKeyEntry.secretKey
         val cipher = Cipher.getInstance(KEY_ALGORITHM)
         cipher.init(Cipher.DECRYPT_MODE, key, spec)
-        return String(cipher.doFinal(encryptedText), Charsets.UTF_8)
+        return String(cipher.doFinal(encryptedText), Charsets.ISO_8859_1)
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
