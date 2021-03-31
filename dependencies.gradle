@@ -29,7 +29,8 @@ ext {
                 okio                   : '2.9.0',
                 biometric              : '1.0.1',
                 map                    : '3.1.0-beta',
-                gmsMaps                : '17.0.0'
+                gmsMaps                : '17.0.0',
+                tink                   : '1.5.0'
         ]
 
         testLibsVersion = [
@@ -85,7 +86,8 @@ ext {
                 okio                   : "com.squareup.okio:okio:${androidLibsVersion.okio}",
                 biometric              : "androidx.biometric:biometric:${androidLibsVersion.biometric}",
                 map                    : "com.google.android.libraries.maps:maps:${androidLibsVersion.map}",
-                gmsMaps                : "com.google.android.gms:play-services-maps:${androidLibsVersion.gmsMaps}"
+                gmsMaps                : "com.google.android.gms:play-services-maps:${androidLibsVersion.gmsMaps}",
+                tink                   : "com.google.crypto.tink:tink-android:${androidLibsVersion.tink}"
         ]
 
         testLibs = [

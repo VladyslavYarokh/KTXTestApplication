@@ -29,6 +29,14 @@
         android:layout_height="wrap_content"
         android:text="encrypt"/>
 
+    <Button
+        android:id="@+id/btnRegkey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="reg"/>
+
     <EditText
         android:id="@+id/etAlias"
         android:layout_width="196dp"

@@ -14,8 +14,8 @@ android {
         applicationId "com.yarokh.vladyslav.ktxtestapplication"
         minSdkVersion appVersion.minSdk
         targetSdkVersion appVersion.targetSdk
-        versionCode 6
-        versionName "1.0.5"
+        versionCode 7
+        versionName "1.0.7"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         Properties properties = new Properties()
@@ -24,6 +24,10 @@ android {
         }
 
         manifestPlaceholders = [mapsApiKey: properties.getProperty("MAPS_API_KEY", "")]
+
+        packagingOptions {
+            exclude  'build-data.properties'
+        }
     }
 
     signingConfigs {
@@ -42,7 +46,7 @@ android {
         release {
 //            manifestPlaceholders = [firebaseCollectionEnabled: "true"]
             minifyEnabled true
-            debuggable false
+            debuggable true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -116,4 +120,6 @@ dependencies {
     androidTestImplementation testLibs.espressoCore
 
     implementation androidLibs.gmsMaps
+
+    implementation androidLibs.tink
 }
