@@ -21,5 +21,7 @@ class ViewsActivity : AppCompatActivity(){
 
         val etView = findViewById<EditText>(R.id.et_placeholder)
         etView.setOnShowFieldListener(view.maxLines)
+
+
     }
 }

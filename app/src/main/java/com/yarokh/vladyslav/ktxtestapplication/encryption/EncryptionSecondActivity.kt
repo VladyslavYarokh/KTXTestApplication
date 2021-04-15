@@ -28,7 +28,6 @@ class EncryptionSecondActivity : AppCompatActivity() {
     private val ANDROID_KEY_STORE = "AndroidKeyStore"
     private val KEY_ALGORITHM = "AES/GCM/NoPadding"
     private val ALIAS_ERROR = "Alias is incorrect"
-//    private var iv = byteArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     private var keyStore: KeyStore = KeyStore.getInstance(ANDROID_KEY_STORE)
     private var encryptedPart = ""
     private var SEPARATOR = "SEPARATOR"

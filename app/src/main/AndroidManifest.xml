@@ -19,8 +19,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".encryption.EncryptionActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".encryption.EncryptionSecondActivity"
@@ -31,20 +30,21 @@
         <activity
             android:name=".encryption.EncryptionThirdActivity"
             android:screenOrientation="portrait">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
-        <activity android:name=".views_interaction.ViewsActivity"
+        <activity
+            android:name=".views_interaction.ViewsActivity"
             android:screenOrientation="portrait">
-                        <intent-filter>
-                            <action android:name="android.intent.action.MAIN" />
+            <!--                        <intent-filter>-->
+            <!--                            <action android:name="android.intent.action.MAIN" />-->
 
-                            <category android:name="android.intent.category.LAUNCHER" />
-                        </intent-filter>
+            <!--                            <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--                        </intent-filter>-->
         </activity>
 
         <activity
@@ -64,11 +64,11 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="http"
-                    android:host="vladyslav.yarokh.com" />
+                    android:host="vladyslav.yarokh.com"
+                    android:scheme="http" />
                 <data
-                    android:scheme="https"
-                    android:host="vladyslav.yarokh.com" />
+                    android:host="vladyslav.yarokh.com"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
 
@@ -80,7 +80,7 @@
             android:name=".deep_links.navigation_links.DeepLinkFragmentActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.NavComponent.NoActionBar">
-            <nav-graph android:value="@navigation/nav_graph"/>
+            <nav-graph android:value="@navigation/nav_graph" />
         </activity>
 
         <activity

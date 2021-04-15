@@ -2,8 +2,8 @@ ext {
     ext {
         appVersion = [
                 minSdk    : 21,
-                targetSdk : 29,
-                compileSdk: 29
+                targetSdk : 30,
+                compileSdk: 30
         ]
 
         androidLibsVersion = [
@@ -41,8 +41,8 @@ ext {
 
         pluginsVersion = [
                 navigationPluginVersion: "${androidLibsVersion.navigationVersion}",
-                kotlinVersion          : '1.3.72',
-                gradleToolsVersion     : '4.0.1',
+                kotlinVersion          : '1.4.32',
+                gradleToolsVersion     : '4.1.1',
                 gmsVersion             : "4.3.3",
                 firebaseCrashlytics    : '2.3.0',
         ]
