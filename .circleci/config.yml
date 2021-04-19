@@ -51,8 +51,12 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - unit-test
-      - android-test
+      - unit-test:
+          requires:
+            - build
+      - android-test:
+          requires:
+            - build
       - debug-build:
           requires:
             - unit-test
