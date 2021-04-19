@@ -24,13 +24,15 @@ jobs:
 
   android-test:
     executor:
-      name: android/android
+      name: android/android-machine
+      resource-class: large
     steps:
       - checkout
+      - android/start-emulator-and-run-tests:
+          system-image: system-images;android-29;default;x86
       - run:
           name: Run UI Test
           command: ./gradlew connectedDebugAndroidTest
-          system-image: system-images;android-30;google_apis;x86
           when: always
       - store_test_results:
           path: ~/test-results
