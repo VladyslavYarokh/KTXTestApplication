@@ -58,3 +58,11 @@ jobs:
       - store_artifacts:
           path: app/build/outputs/apk/debug
 
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - unit-test
+      - android-test
+      - debug-build
