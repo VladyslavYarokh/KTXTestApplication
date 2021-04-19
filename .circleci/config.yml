@@ -47,6 +47,8 @@ jobs:
           name: Run UI Test
           command: ./gradlew connectedDebugAndroidTest
           system-image: system-images;android-30;google_apis;x86
+      - store_test_results:
+          path: ~/test-results
 
   debug-build:
     executor:
