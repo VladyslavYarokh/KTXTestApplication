@@ -40,6 +40,7 @@ jobs:
       - run:
           name: Run UI Test
           command: ./gradlew connectedDebugAndroidTest
+          when: always
       - store_test_results:
           path: ~/test-results
 
@@ -53,6 +54,7 @@ jobs:
       - run:
           name: Assemble debug build
           command: ./gradlew assembleDebug
+          when: always
       - store_artifacts:
           path: app/build/outputs/apk/debug
 
