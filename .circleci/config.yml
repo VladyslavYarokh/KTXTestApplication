@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  android: circleci/android@0.2.1
+  android: circleci/android@1.0
 
 jobs:
   build:
@@ -25,11 +25,9 @@ jobs:
   android-test:
     executor:
       name: android/android-machine
-      resource-class: large
+      resource-class: xlarge
     steps:
       - checkout
-      - android/start-emulator-and-run-tests:
-          system-image: system-images;android-29;default;x86
       - run:
           name: Run UI Test
           command: ./gradlew connectedDebugAndroidTest
@@ -55,5 +53,6 @@ workflows:
     jobs:
       - build
       - unit-test
-      - android-test
+      - android-test:
+          system-image: system-images;android-29;default;x86
       - debug-build
