@@ -29,6 +29,7 @@ jobs:
     steps:
       - checkout
       - android/start-emulator-and-run-tests:
+          test-command: ./gradlew connectedDebugAndroidTest
           system-image: system-images;android-29;default;x86
       - store_test_results:
           path: ~/test-results
