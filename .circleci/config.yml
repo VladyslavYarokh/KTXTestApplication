@@ -14,7 +14,7 @@ jobs:
 
   unit-test:
     executor:
-      name: android/android-machine
+      name: android/android
     steps:
       - checkout
       - android/restore-gradle-cache
@@ -37,26 +37,27 @@ jobs:
 
   android-test:
     executor:
-      name: android/android-machine
-      resource-class: xlarge
+      name: android/android
     steps:
       - checkout
       - android/start-emulator-and-run-tests:
           test-command: ./gradlew connectedDebugAndroidTest
           system-image: system-images;android-30;google_apis;x86
+      - run:
+          name: Run UI Test
+          command: ./gradlew connectedDebugAndroidTest
+          system-image: system-images;android-30;google_apis;x86
 
   debug-build:
     executor:
-      name: android/android-machine
-      resource-class: xlarge
+      name: android/android
     steps:
       - checkout
       - android/restore-gradle-cache
       - android/restore-build-cache
       - run:
           name: Assemble debug build
-          command: |
-            ./gradlew assembleDebug
+          command: ./gradlew assembleDebug
       - store_artifacts:
           path: app/build/outputs/apk/debug
 
