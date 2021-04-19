@@ -35,8 +35,13 @@ ext {
 
         testLibsVersion = [
                 junitVersion       : '4.13',
-                junitExtVersion    : "1.1.1",
-                espressoCoreVersion: "3.2.0"
+                junitExtVersion    : '1.1.1',
+                espressoCoreVersion: '3.2.0',
+                espressoIdling     : '3.3.0',
+                mockito            : '3.9.0',
+                mockitoInline      : '3.9.0',
+                json               : '20180813',
+                powerMock          : '2.0.9'
         ]
 
         pluginsVersion = [
@@ -91,9 +96,16 @@ ext {
         ]
 
         testLibs = [
-                junit       : "junit:junit:${testLibsVersion.junitVersion}",
-                junitExt    : "androidx.test.ext:junit:${testLibsVersion.junitExtVersion}",
-                espressoCore: "androidx.test.espresso:espresso-core:${testLibsVersion.espressoCoreVersion}"
+                junit          : "junit:junit:${testLibsVersion.junitVersion}",
+                junitExt       : "androidx.test.ext:junit:${testLibsVersion.junitExtVersion}",
+                espressoCore   : "androidx.test.espresso:espresso-core:${testLibsVersion.espressoCoreVersion}",
+                espressoIdling : "androidx.test.espresso:espresso-idling-resource:${testLibsVersion.espressoIdling}",
+                mockitoCore    : "org.mockito:mockito-core:${testLibsVersion.mockito}",
+                mockitoAndroid : "org.mockito:mockito-android:${testLibsVersion.mockito}",
+                mockitoInline  : "org.mockito:mockito-inline:${testLibsVersion.mockitoInline}",
+                json           : "org.json:json:${testLibsVersion.json}",
+                powerMockModule: "org.powermock:powermock-module-junit4:${testLibsVersion.powerMock}",
+                powerMockApi   : "org.powermock:powermock-api-mockito2:${testLibsVersion.powerMock}"
         ]
     }
 }

@@ -66,6 +66,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -117,8 +120,16 @@ dependencies {
 //    implementation androidLibs.firebaseCrashlytics
 
     testImplementation testLibs.junit
+    testImplementation testLibs.mockitoCore
+    testImplementation testLibs.mockitoInline
+    testImplementation testLibs.json
+    testImplementation testLibs.powerMockModule
+    testImplementation testLibs.powerMockApi
     androidTestImplementation testLibs.junitExt
     androidTestImplementation testLibs.espressoCore
+    androidTestImplementation testLibs.mockitoAndroid
+    androidTestImplementation testLibs.espressoIdling
+    
 
     implementation androidLibs.gmsMaps
 

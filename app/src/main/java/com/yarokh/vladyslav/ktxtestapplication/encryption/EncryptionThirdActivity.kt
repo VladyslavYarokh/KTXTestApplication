@@ -8,19 +8,20 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.crypto.tink.*
 import com.google.crypto.tink.aead.AeadConfig
-import com.google.crypto.tink.aead.AesGcmKeyManager
 import com.yarokh.vladyslav.ktxtestapplication.databinding.ActivityEncryptionBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.io.File
 
 
 class EncryptionThirdActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEncryptionBinding
-    private val baseStr = "DSheremetov@beeline.kz"
-    private val str = "AQBfaTsCP3HwC1xquiB1Hw7dwPGnxtkXvIB3HMYjjtYRYK+9Eg=="
+    val baseStr = "DSheremetov@beeline.kz"
+    val str = "vlados the best"
     private var encryptedPart = ""
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    lateinit var encryptionHelper: EncryptionHelper
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,12 +29,14 @@ class EncryptionThirdActivity : AppCompatActivity() {
         binding = ActivityEncryptionBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        encryptionHelper = EncryptionHelper(applicationContext)
 
         AeadConfig.register()
 
         binding.apply {
             btnRegkey.setOnClickListener {
-                generateKey()
+                encryptionHelper.generateKey()
+                tvResult.text = (!encryptionHelper.isKeyNotContains()).toString()
             }
 
             btnEncrypt.setOnClickListener {
@@ -41,53 +44,35 @@ class EncryptionThirdActivity : AppCompatActivity() {
                     if (etAlias.text.toString().isEmpty()) {
                         Toast.makeText(this@EncryptionThirdActivity, "Empty", Toast.LENGTH_LONG)
                             .show()
+                        tvResult.text = ""
                     } else {
-                        encryptedPart = encrypt(etAlias.text.toString(), baseStr)
+                        encryptedPart = Base64.encodeToString(
+                            encryptionHelper.encrypt(
+                                str, AliasUtils.getAlias(
+                                    baseStr
+                                )
+                            ), Base64.NO_WRAP
+                        )
                         Toast.makeText(
                             this@EncryptionThirdActivity,
                             encryptedPart,
                             Toast.LENGTH_LONG
                         ).show()
+                        tvResult.text = encryptedPart
                     }
                 }
             }
 
             btnDecrypt.setOnClickListener {
                 CoroutineScope(Dispatchers.Main).launch {
-                    Toast.makeText(
-                        this@EncryptionThirdActivity,
-                        decrypt(str, baseStr),
-                        Toast.LENGTH_LONG
-                    ).show()
+                    tvResult.text = encryptionHelper.decrypt(
+                        Base64.decode(
+                            encryptedPart,
+                            Base64.NO_WRAP
+                        ), AliasUtils.getAlias(baseStr)
+                    )
                 }
             }
-        }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.M)
-    private fun encrypt(msg: String, alias: String): String {
-        val keysetFilename = applicationContext.filesDir.path + "/my_keyset.json"
-        val keysetHandle = CleartextKeysetHandle.read(JsonKeysetReader.withFile(File(keysetFilename)))
-        val encryptor = keysetHandle.getPrimitive(Aead::class.java)
-        val encrypted = encryptor.encrypt(msg.toByteArray(Charsets.ISO_8859_1), alias.toByteArray(Charsets.ISO_8859_1))
-        return Base64.encodeToString(encrypted, Base64.NO_WRAP) ?: error("NullPointerException")
-    }
-
-    private fun decrypt(encryptedText: String, alias: String): String {
-        val keysetFilename = applicationContext.filesDir.path + "/my_keyset.json"
-        val keysetHandle = CleartextKeysetHandle.read(JsonKeysetReader.withFile(File(keysetFilename)))
-        val decryptor = keysetHandle.getPrimitive(Aead::class.java)
-        val decrypted = decryptor.decrypt(Base64.decode(encryptedText, Base64.NO_WRAP), alias.toByteArray(Charsets.ISO_8859_1))
-        return String(decrypted, Charsets.ISO_8859_1)
-    }
-
-    private fun generateKey(){
-        val f = File(applicationContext.filesDir.path + "/")
-        val files = f.list { _, name -> name == "my_keyset.json" }
-        if(files!!.isEmpty()) {
-            val keysetHandle = KeysetHandle.generateNew(AesGcmKeyManager.aes128GcmTemplate())
-            val keysetFilename = applicationContext.filesDir.path + "/my_keyset.json"
-            CleartextKeysetHandle.write(keysetHandle, JsonKeysetWriter.withFile(File(keysetFilename)))
         }
     }
 }
