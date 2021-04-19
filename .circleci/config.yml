@@ -25,13 +25,11 @@ jobs:
   android-test:
     executor:
       name: android/android-machine
-      resource-class: xlarge
+      resource-class: large
     steps:
       - checkout
-      - run:
-          name: Run UI Test
-          command: ./gradlew connectedDebugAndroidTest
-          when: always
+      - android/start-emulator-and-run-tests:
+          system-image: system-images;android-29;default;x86
       - store_test_results:
           path: ~/test-results
 
@@ -53,6 +51,5 @@ workflows:
     jobs:
       - build
       - unit-test
-      - android-test:
-          system-image: system-images;android-29;default;x86
+      - android-test
       - debug-build
