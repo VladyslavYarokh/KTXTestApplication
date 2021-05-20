@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_transition"
+    app:startDestination="@id/fragmentOutTransition">
+
+    <fragment
+        android:id="@+id/fragmentOutTransition"
+        android:name="com.yarokh.vladyslav.ktxtestapplication.transitions.out_fragment.FragmentOutTransition"
+        android:label="FragmentOutTransition"
+        tools:layout="@layout/fragment_transition_out">
+        <action
+            android:id="@+id/fromFragmentOutTransitionToFragmentInTransition"
+            app:destination="@id/fragmentInTransition"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentInTransition"
+        android:name="com.yarokh.vladyslav.ktxtestapplication.transitions.in_fragment.FragmentInTransition"
+        android:label="FragmentInTransition"
+        tools:layout="@layout/fragment_transition_in">
+        <argument
+            android:name="link"
+            app:argType="string"/>
+    </fragment>
+</navigation>
