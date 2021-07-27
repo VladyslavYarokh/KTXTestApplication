@@ -1,3 +1,4 @@
 include ':app'
 rootProject.name = "KTXTestApplication"
 include ':ktxtestapplicationwithhilt'
+include ':ktxbottomsheet'

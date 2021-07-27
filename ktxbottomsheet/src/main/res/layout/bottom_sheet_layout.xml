@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layout_top"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/simple_image"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:importantForAccessibility="no"
+                app:srcCompat="@drawable/ic_launcher_foreground"
+                app:tint="#32CD32" />
+
+            <TextView
+                android:id="@+id/simple_text"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Text and image in linear layout"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_collapsed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_top">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:text="Text about something"
+                android:textSize="24sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:text="Some element, for example RecyclerView"
+                android:textSize="32sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_expanded"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_top">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:gravity="center"
+                    android:text="First Line"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:gravity="center"
+                    android:text="Second Line"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:gravity="center"
+                    android:text="Third Line"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Text about something"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:gravity="center"
+                android:text="Some bigger element, for example bigger RecyclerView"
+                android:textSize="36sp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
