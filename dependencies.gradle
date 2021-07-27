@@ -46,10 +46,11 @@ ext {
 
         pluginsVersion = [
                 navigationPluginVersion: "${androidLibsVersion.navigationVersion}",
-                kotlinVersion          : '1.4.32',
+                kotlinVersion          : '1.5.0',
                 gradleToolsVersion     : '4.1.1',
                 gmsVersion             : "4.3.3",
                 firebaseCrashlytics    : '2.3.0',
+                kapt                   : '1.5.21'
         ]
 
         androidPlugins = [
@@ -57,7 +58,8 @@ ext {
                 kotlin             : "org.jetbrains.kotlin:kotlin-gradle-plugin:${pluginsVersion.kotlinVersion}",
                 gradle             : "com.android.tools.build:gradle:${pluginsVersion.gradleToolsVersion}",
                 gms                : "com.google.gms:google-services:${pluginsVersion.gmsVersion}",
-                firebaseCrashlytics: "com.google.firebase:firebase-crashlytics-gradle:${pluginsVersion.firebaseCrashlytics}"
+                firebaseCrashlytics: "com.google.firebase:firebase-crashlytics-gradle:${pluginsVersion.firebaseCrashlytics}",
+                kapt               : "org.jetbrains.kotlin.kapt:${pluginsVersion.kapt}"
         ]
 
         androidLibs = [

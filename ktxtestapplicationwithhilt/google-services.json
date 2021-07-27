@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "389104336717",
+    "project_id": "tstnotifications-51132",
+    "storage_bucket": "tstnotifications-51132.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389104336717:android:24d3b21d3d66ff24598104",
+        "android_client_info": {
+          "package_name": "vladyslav.yarokh.ktxtestapplicationwithhilt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "389104336717-csk9h9dq46nu0m1748dnnfbf28cufmfb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABqsnO66cdZF4CoklltIIEELRxXWNPzog"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "389104336717-csk9h9dq46nu0m1748dnnfbf28cufmfb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

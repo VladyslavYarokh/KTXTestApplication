@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_hilt"
+    app:startDestination="@id/searchFragment">
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="vladyslav.yarokh.ktxtestapplicationwithhilt.ui.search.SearchFragment"
+        android:label="search_fragment"
+        tools:layout="@layout/search_fragment" >
+        <action
+            android:id="@+id/fromSearchFragmentToBooksFragment"
+            app:destination="@id/booksFragment"
+            app:popExitAnim="@anim/nav_default_exit_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"/>
+    </fragment>
+    <fragment
+        android:id="@+id/booksFragment"
+        android:name="vladyslav.yarokh.ktxtestapplicationwithhilt.ui.books.BooksFragment"
+        android:label="BooksFragment"
+        tools:layout="@layout/books_fragment">
+        <argument
+            android:name="query"
+            app:argType="string"
+            app:nullable="true"/>
+    </fragment>
+</navigation>

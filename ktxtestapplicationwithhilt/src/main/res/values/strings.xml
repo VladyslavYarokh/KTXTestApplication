@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">KTXTestApplicationWithHilt</string>
+    <string name="enter_search_params">Enter book name here</string>
+    <string name="search">Search book</string>
+    <string name="field_is_empty">Please, enter the book title.</string>
+    <string name="smth_went_wrong">Something went wrong. Retry later.</string>
+</resources>
