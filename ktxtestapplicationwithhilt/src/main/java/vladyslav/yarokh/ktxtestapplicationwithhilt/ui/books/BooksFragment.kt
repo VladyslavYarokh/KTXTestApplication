@@ -11,10 +11,18 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.workDataOf
 import dagger.hilt.android.AndroidEntryPoint
 import vladyslav.yarokh.ktxtestapplicationwithhilt.R
 import vladyslav.yarokh.ktxtestapplicationwithhilt.data.*
 import vladyslav.yarokh.ktxtestapplicationwithhilt.databinding.BooksFragmentBinding
+import vladyslav.yarokh.ktxtestapplicationwithhilt.workers.BookItemWorker
+import java.util.concurrent.TimeUnit
+
+private const val NAME = "name"
+private const val AUTHOR = "author"
 
 @AndroidEntryPoint
 class BooksFragment: Fragment(), BookItemListener {
@@ -68,7 +76,20 @@ class BooksFragment: Fragment(), BookItemListener {
         }
     }
 
+    /**
+     * 1) Создаем класс работника, наследующего Worker класс (реализуем метод doWork)
+     * 2) Создаем Мар входных данных с помощью workDataOf и передаем в WorkRequestBuilder с помощью setInputData(data: Data)
+     * 3) Достаем данные в методе doWork с помощью inputData.keyValueMap
+     * 4) Создаем OneTimeWorker/PeriodicTimeWorker и запускаем его работу через WorkManager.getInstance(context).enqueue(worker)
+     * */
+
     override fun onBookClick(bookModel: BookModel) {
         Toast.makeText(requireContext(), "${bookModel.name}, Author: ${bookModel.author}", Toast.LENGTH_LONG).show()
+        val modelData = workDataOf(
+            NAME to bookModel.name,
+            AUTHOR to bookModel.author
+        )
+        val worker = OneTimeWorkRequestBuilder<BookItemWorker>().setInputData(modelData).setInitialDelay(10L, TimeUnit.SECONDS).build()
+        WorkManager.getInstance(requireContext()).enqueue(worker)
     }
 }

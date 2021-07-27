@@ -70,4 +70,6 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.35")
 
     implementation 'com.google.firebase:firebase-firestore-ktx:23.0.3'
+
+    implementation 'androidx.work:work-runtime-ktx:2.6.0-beta02'
 }

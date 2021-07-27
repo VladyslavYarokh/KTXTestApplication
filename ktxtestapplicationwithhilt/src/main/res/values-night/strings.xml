@@ -4,4 +4,6 @@
     <string name="search">Search book</string>
     <string name="field_is_empty">Please, enter the book title.</string>
     <string name="smth_went_wrong">Something went wrong. Retry later.</string>
+    <string name="channel_name">main_chanell</string>
+    <string name="channel_description">Main channel description</string>
 </resources>
