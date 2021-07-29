@@ -3,4 +3,8 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_filter">Filter</string>
+    <string name="select_min_price">Select min price for the product</string>
+    <string name="list_title">Products list</string>
+    <string name="apply">Apply</string>
 </resources>
