@@ -1,5 +1,6 @@
 package vladyslav.yarokh.ktxfragmentresultapi.ui.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+import com.google.firebase.remoteconfig.ktx.get
+import com.google.firebase.remoteconfig.ktx.remoteConfig
 import vladyslav.yarokh.ktxfragmentresultapi.R
 import vladyslav.yarokh.ktxfragmentresultapi.databinding.FragmentHomeBinding
 import vladyslav.yarokh.ktxfragmentresultapi.ui.data.PriceSort
@@ -20,6 +25,8 @@ import vladyslav.yarokh.ktxfragmentresultapi.ui.helper.list
 
 private const val RESULT_KEY = "result_key_products"
 private const val SORT_KEY = "price_sort_key"
+private const val VERSION = "version"
+private const val LAST_UPDATE = "last_update"
 
 class HomeFragment: Fragment(), OnProductItemClick {
     private val productAdapter = ProductAdapter(this).also {
@@ -27,6 +34,7 @@ class HomeFragment: Fragment(), OnProductItemClick {
     }
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var remoteConfig: FirebaseRemoteConfig
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,6 +62,7 @@ class HomeFragment: Fragment(), OnProductItemClick {
         initViews()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun initViews() {
         binding.apply {
             rvProducts.apply {
@@ -69,6 +78,12 @@ class HomeFragment: Fragment(), OnProductItemClick {
 
             fabFilter.setOnClickListener {
                 findNavController().navigate(HomeFragmentDirections.fromHomeToFilter())
+            }
+
+            remoteConfig = Firebase.remoteConfig
+            remoteConfig.fetchAndActivate().addOnCompleteListener {
+                tvVersion.text = "Version: ${remoteConfig[VERSION].asString()}"
+                tvLastUpdate.text = "Last update: ${remoteConfig[LAST_UPDATE].asString()}"
             }
         }
     }
