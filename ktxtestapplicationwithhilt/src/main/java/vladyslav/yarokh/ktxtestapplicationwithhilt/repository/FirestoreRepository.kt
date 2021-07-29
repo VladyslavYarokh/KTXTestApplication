@@ -15,7 +15,7 @@ private const val DB_FIELD_NAME = "name"
 private const val DB_FIELD_AUTHOR = "author"
 
 @Singleton
-class FirestoreRepository @Inject constructor(
+internal class FirestoreRepository @Inject constructor(
         private val firestore: FirebaseFirestore,
         private val logger: Logger
     ) {

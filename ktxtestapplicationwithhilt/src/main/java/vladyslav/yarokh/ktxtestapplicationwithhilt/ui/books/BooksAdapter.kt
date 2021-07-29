@@ -10,7 +10,7 @@ import vladyslav.yarokh.ktxtestapplicationwithhilt.ext.autoNotify
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
-class BooksAdapter (
+internal class BooksAdapter (
     private val listener: BookItemListener
 ):  BaseRecyclerAdapter<BookModel>(){
 

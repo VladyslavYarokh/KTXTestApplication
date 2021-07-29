@@ -8,7 +8,7 @@ import vladyslav.yarokh.ktxtestapplicationwithhilt.repository.FirestoreRepositor
 import javax.inject.Inject
 
 @HiltViewModel
-class BooksViewModel @Inject constructor(private val repository: FirestoreRepository): ViewModel() {
+internal class BooksViewModel @Inject constructor(private val repository: FirestoreRepository): ViewModel() {
 
     fun getBooks(query: String): LiveData<BooksState> {
         return repository.getBooks(query)

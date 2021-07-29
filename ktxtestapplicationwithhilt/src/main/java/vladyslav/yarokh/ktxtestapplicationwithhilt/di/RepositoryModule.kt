@@ -25,21 +25,21 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideFirestore(): FirebaseFirestore = Firebase.firestore
+    internal fun provideFirestore(): FirebaseFirestore = Firebase.firestore
 
     @Provides
     @Singleton
-    fun provideRepository(firestore: FirebaseFirestore, @NullScope logger: Logger): FirestoreRepository = FirestoreRepository(firestore, logger)
+    internal fun provideRepository(firestore: FirebaseFirestore, @NullScope logger: Logger): FirestoreRepository = FirestoreRepository(firestore, logger)
 
     @Provides
     @NullScope
-    fun provideNullLogger(): Logger = Logger.getAnonymousLogger().apply {
+    internal fun provideNullLogger(): Logger = Logger.getAnonymousLogger().apply {
         level = Level.INFO
     }
 
     @Provides
     @BooksScope
-    fun provideBooksLogger(): Logger = Logger.getAnonymousLogger().apply {
+    internal fun provideBooksLogger(): Logger = Logger.getAnonymousLogger().apply {
         level = Level.WARNING
     }
 }

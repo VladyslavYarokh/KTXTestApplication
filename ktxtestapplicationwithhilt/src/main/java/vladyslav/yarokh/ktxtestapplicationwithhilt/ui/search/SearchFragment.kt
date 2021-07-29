@@ -13,7 +13,7 @@ import vladyslav.yarokh.ktxtestapplicationwithhilt.R
 import vladyslav.yarokh.ktxtestapplicationwithhilt.databinding.SearchFragmentBinding
 
 @AndroidEntryPoint
-class SearchFragment : Fragment() {
+internal class SearchFragment : Fragment() {
 
     private val viewModel by viewModels<SearchViewModel>()
     private lateinit var binding: SearchFragmentBinding

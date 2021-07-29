@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="grant_permission">Grant geolocation permission</string>
+    <string name="granted_permissions">Granted Permissions</string>
+    <string name="non_granted_permissions">Non granted permissions</string>
+</resources>

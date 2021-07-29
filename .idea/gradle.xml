@@ -13,8 +13,11 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/ktxactivityresultapi" />
             <option value="$PROJECT_DIR$/ktxbottomsheet" />
+            <option value="$PROJECT_DIR$/ktxfragmentresultapi" />
             <option value="$PROJECT_DIR$/ktxtestapplicationwithhilt" />
+            <option value="$PROJECT_DIR$/recyclerlibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

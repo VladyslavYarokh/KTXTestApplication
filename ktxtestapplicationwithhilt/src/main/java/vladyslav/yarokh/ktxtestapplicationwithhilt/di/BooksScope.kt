@@ -4,8 +4,8 @@ import javax.inject.Qualifier
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class BooksScope
+internal annotation class BooksScope
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class NullScope
+internal annotation class NullScope

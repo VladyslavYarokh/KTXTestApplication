@@ -14,7 +14,7 @@ import androidx.core.app.NotificationManagerCompat
 import vladyslav.yarokh.ktxtestapplicationwithhilt.MainActivity
 import vladyslav.yarokh.ktxtestapplicationwithhilt.R
 
-class KtxNotificationManager (private val context: Context) {
+internal class KtxNotificationManager (private val context: Context) {
     fun createNotificationChannel(channelID: String) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channelName = context.getString(R.string.channel_name)

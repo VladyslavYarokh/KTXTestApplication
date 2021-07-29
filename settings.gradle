@@ -2,3 +2,6 @@ include ':app'
 rootProject.name = "KTXTestApplication"
 include ':ktxtestapplicationwithhilt'
 include ':ktxbottomsheet'
+include ':ktxfragmentresultapi'
+include ':ktxactivityresultapi'
+include ':recyclerlibrary'

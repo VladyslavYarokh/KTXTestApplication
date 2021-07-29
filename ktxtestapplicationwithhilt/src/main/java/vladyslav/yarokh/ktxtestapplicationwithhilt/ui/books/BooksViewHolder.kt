@@ -10,7 +10,7 @@ import vladyslav.yarokh.ktxtestapplicationwithhilt.base.BaseViewHolder
 import vladyslav.yarokh.ktxtestapplicationwithhilt.data.BookModel
 import vladyslav.yarokh.ktxtestapplicationwithhilt.databinding.HolderBookBinding
 
-class BooksViewHolder(binding: ViewDataBinding, private val listener: BookItemListener): BaseViewHolder<BookModel, HolderBookBinding>(binding) {
+internal class BooksViewHolder(binding: ViewDataBinding, private val listener: BookItemListener): BaseViewHolder<BookModel, HolderBookBinding>(binding) {
     override fun bindView(position: Int) {
         with(binding){
             tvBookName.text = item.name

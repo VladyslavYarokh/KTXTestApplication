@@ -9,7 +9,7 @@ import vladyslav.yarokh.ktxtestapplicationwithhilt.workers.notifications.KtxNoti
 private const val NAME = "name"
 private const val AUTHOR = "author"
 
-class BookItemWorker(context: Context, workerParameters: WorkerParameters): Worker(context, workerParameters) {
+internal class BookItemWorker(context: Context, workerParameters: WorkerParameters): Worker(context, workerParameters) {
     private val channelID by lazy {
         "main_channel"
     }

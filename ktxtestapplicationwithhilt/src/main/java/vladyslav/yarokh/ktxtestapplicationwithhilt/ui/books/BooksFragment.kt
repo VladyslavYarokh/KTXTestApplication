@@ -25,7 +25,7 @@ private const val NAME = "name"
 private const val AUTHOR = "author"
 
 @AndroidEntryPoint
-class BooksFragment: Fragment(), BookItemListener {
+internal class BooksFragment: Fragment(), BookItemListener {
 
     private lateinit var binding: BooksFragmentBinding
     private val viewModel by viewModels<BooksViewModel>()
