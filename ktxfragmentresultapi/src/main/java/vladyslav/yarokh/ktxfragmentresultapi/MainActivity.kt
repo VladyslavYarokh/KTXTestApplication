@@ -3,6 +3,7 @@ package vladyslav.yarokh.ktxfragmentresultapi
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import vladyslav.yarokh.ktxfragmentresultapi.databinding.ActivityMainBinding
+import vladyslav.yarokh.ktxfragmentresultapi.ui.data.PriceSort
 
 class MainActivity : AppCompatActivity() {
 
