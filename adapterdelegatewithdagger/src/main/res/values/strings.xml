@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AdapterDelegateWithDagger</string>
+    <string name="show_next_screen">Show next screen</string>
+    <string name="back">Back</string>
+</resources>
