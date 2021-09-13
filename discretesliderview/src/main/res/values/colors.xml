@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">@color/green</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="red">#FB3F4C</color>
+    <color name="red_opacity_50">#80FB3F4C</color>
+    <color name="red_opacity_10">#1AFB3F4C</color>
+    <color name="red_opacity_05">#0AFB3F4C</color>
+    <color name="red_light">#FE5400</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="white_opacity_90">#E5FFFFFF</color>
+    <color name="white_opacity_95">#F2FFFFFF</color>
+    <color name="white_opacity_85">#D8FFFFFF</color>
+    <color name="white_opacity_75">#BFFFFFFF</color>
+    <color name="white_opacity_50">#80FFFFFF</color>
+
+    <color name="green">#1EB763</color>
+    <color name="green_opacity_5">#0D1EB763</color>
+
+    <color name="blue">#007AFF</color>
+    <color name="yellow_light">#FFF2D1</color>
+    <color name="orange">#FEA801</color>
+    <color name="orange_opacity_05">#0DFEA801</color>
+    <color name="yellow_accent">#F7D04C</color>
+
+    <color name="black">#000000</color>
+    <color name="grey">#888888</color>
+    <color name="dark_grey">#222421</color>
+    <color name="grey_semi_light">#E0E0E0</color>
+    <color name="grey_light_dark">#E7E7E7</color>
+    <color name="grey_light">#F6F6F6</color>
+    <color name="grey_light_referral">#9B9B9B</color>
+    <color name="grey_light_card">#FBFBFB</color>
+    <color name="grey_orders_opacity_27">#45E5E5E5</color>
+
+    <color name="grey_semi_dark">#F5F5F5</color>
+    <color name="gray_f5">#F3FCF5</color>
+    <color name="grey_light_light">#F2F2F2</color>
+    <color name="grey_category_dot">#777777</color>
+    <color name="grey_category_icon">@color/grey_light</color>
+    <color name="grey_time">#666666</color>
+
+    <color name="color_shimmer">#E0E0E0</color>
+
+    <color name="ripple_light">#33FFFFFF</color>
+    <color name="ripple_dark">#14000000</color>
+    <color name="light_gray">#888888</color>
+
+</resources>

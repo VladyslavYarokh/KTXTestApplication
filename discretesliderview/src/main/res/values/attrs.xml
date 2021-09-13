@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DiscreteSliderView">
+        <attr name="ds_title" format="string" />
+        <attr name="startValue" format="float" />
+        <attr name="endValue" format="float" />
+        <attr name="step" format="float" />
+    </declare-styleable>
+</resources>
