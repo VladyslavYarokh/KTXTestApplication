@@ -73,5 +73,4 @@
     <dimen name="promotions_main_screen_image_width">125dp</dimen>
     <dimen name="promotions_main_screen_image_view_height">115dp</dimen>
     <dimen name="seekbar_thumb_width">25dp</dimen>
-    <dimen name="mtrl_slider_track_side_padding">@dimen/default_margin</dimen>
 </resources>
