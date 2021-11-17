@@ -93,5 +93,8 @@ class DiscreteSliderView @JvmOverloads constructor(
                 thumbTintList = ColorStateList.valueOf(context.getColor(R.color.green))
             }
         }
+
+        val t = "ggg"
+        t.isNotBlank()
     }
 }

@@ -3,9 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_transition.xml" value="0.10916919959473151" />
+        <entry key="app/src/main/res/layout/activity_views.xml" value="0.1160081053698075" />
         <entry key="discretesliderview/src/main/res/layout/activity_main.xml" value="0.225" />
         <entry key="discretesliderview/src/main/res/layout/discrete_slider_tick_item.xml" value="0.225" />
         <entry key="discretesliderview/src/main/res/layout/discrete_slider_view.xml" value="0.225" />
+        <entry key="ktxmotionlayout/src/main/res/layout/activity_scrolling.xml" value="0.1" />
+        <entry key="ktxmotionlayout/src/main/res/layout/content_scrolling.xml" value="0.2713270142180095" />
+        <entry key="ktxmotionlayout/src/main/res/menu/menu_scrolling.xml" value="0.22447916666666667" />
       </map>
     </option>
   </component>
