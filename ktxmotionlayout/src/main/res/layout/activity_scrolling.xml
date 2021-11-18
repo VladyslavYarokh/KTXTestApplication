@@ -30,15 +30,20 @@
         android:src="@drawable/ic_bookmark"
         />
 
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/background"
+        />
+
     <LinearLayout
         android:id="@+id/llIndicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivMotionElement"
         >
 
         <View
@@ -64,15 +69,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="I AM BIG TITLE"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llIndicator"/>
+        android:textSize="24sp" />
 
     <include android:id="@+id/llScrollingContent"
-        layout="@layout/content_scrolling"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llIndicator"/>
+        layout="@layout/content_scrolling" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
